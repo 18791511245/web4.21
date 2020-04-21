@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			.content{
+				width: 1200px;
+				overflow: hidden;
+				margin: 50px auto;
+				border: 1px solid red;
+			}
+			.item{
+				width: 280px;
+				height: 300px;
+				float: left;
+			}
+			.item img{
+				width: 280px;
+				height: 230px;
+				box-shadow: 0px 0px 5px #000;
+				margin: 5px;
+			}
+			h3{
+				line-height: 30px;
+			}
+			p{
+				line-height: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="1.txt" target="_blank"></a>
+		<input type="button"  id="btn" value="出来" />
+		<div id="content" class="content">
+			<!--<div class="item">
+				<img src="img/04.jpg"/>
+				<h3>星期二</h3>
+				<p>星期三</p>
+			</div>-->
+		</div>
+		<script type="text/javascript">
+			var contentlist=[
+			    {"img":"img/04.jpg","title":"咸阳","desc":"咸阳市个好地方"},
+			    {"img":"img/04.jpg","title":"咸阳","desc":"咸阳市个好地方"},
+			    {"img":"img/04.jpg","title":"咸阳","desc":"咸阳市个好地方"},
+			    {"img":"img/04.jpg","title":"咸阳","desc":"咸阳市个好地方"},
+			    {"img":"img/04.jpg","title":"咸阳","desc":"咸阳市个好地方"},
+			];
+			var content=document.getElementById("content");
+			var str="";
+			for (var i=0;i<contentlist.length;i++){
+				str+=
+				`<div class="item">
+				<img src="${contentlist[i].img}"/>
+				<h3>${contentlist[i].title}</h3>
+				<p>${contentlist[i].desc}</p>
+			</div>`
+			content.innerHTML=str;
+		</script>
+	</body>
+</html>

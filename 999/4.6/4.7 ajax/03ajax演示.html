@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="粗来" />
+		<div id="content">
+			
+		</div>
+		<script type="text/javascript">
+			var btn=document.getElementById("btn");
+			var content=document.getElementById("content");
+			/*btn.onclick=function(){
+				var xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if (xhr.readyState==4){
+						console.log(xhr.responseText)
+					}
+				}
+			}
+				xhr.open("get","1.txt",true);
+	            xhr.send(null);*/
+	           
+	           
+	           btn.onclick=function(){
+				var xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if (xhr.readyState==4){
+						console.log(xhr.responseText)
+					}
+				}
+			}
+				xhr.open("get","1.txt",true);
+	            xhr.send(null);    
+		</script>
+	</body>
+</html>

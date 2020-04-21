@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<script src="js/jquery-1.12.3.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			#pageCtrl li.cur {
+				background-color: orange;
+			}
+			#pageCtrl {
+				display: flex;
+				justify-content: space-evenly;
+				width: 350px;
+				margin: auto;
+				text-align: center;
+				line-height: 30px;
+			}
+			#pageCtrl #previous,
+			#pageCtrl #next {
+				width: 48px;
+				padding: 0 4px;
+			}
+			#pageCtrl li {
+				color: #333;
+				border-radius: 4px;
+				width: 30px;
+				height: 30px;
+				background-color: #ccc;
+			}
+			#pageCtrl li:hover {
+				cursor: pointer;
+			}
+		</style>
+		<title>Document</title>
+	</head>
+
+	<body>
+		<ul id="pageCtrl">
+			<li class="cur">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>···</li>
+			<li>7</li>
+			<li>8</li>
+			<li id="next">9</li>
+		</ul>
+	</body>
+	<script>
+		var pageNum = 0;
+		$('#pageCtrl li').click(function () {
+			if ($(this).html == '···') {
+				$(this).removeClass('cur');
+				return;
+			}
+			let index = $(this).index();
+			if (index < 3) {
+				$(this).addClass('cur').siblings().removeClass('cur');
+				$(this).html(index + 1);
+				$('#pageCtrl li').eq(3).html('4');
+				$('#pageCtrl li').eq(4).html('···');
+				$('#pageCtrl li').eq(5).html('8');
+				$('#pageCtrl li').eq(6).html('9');
+				pageNum = index + 1;
+				console.log(pageNum);
+			}
+			if (index == 3) {
+				$(this).addClass('cur').siblings().removeClass('cur');
+				$(this).html(4);
+				$('#pageCtrl li').eq(1).html('···');
+				$('#pageCtrl li').eq(2).html('3');
+				$('#pageCtrl li')
+					.eq(4)
+					.html(index + 2);
+				$('#pageCtrl li').eq(5).html('···');
+				pageNum = 4;
+				console.log(pageNum);
+			}
+			if (index == 4) {
+				$(this).removeClass('cur').eq(3).addClass('cur');
+				$(this).html(index + 1);
+				$('#pageCtrl li').eq(1).html('···');
+				$('#pageCtrl li').eq(2).html('3');
+				$('#pageCtrl li')
+					.eq(4)
+					.html(index + 2);
+				$('#pageCtrl li').eq(5).html('···');
+				pageNum = 4;
+				console.log(pageNum);
+			}
+		});
+	</script>
+</html>

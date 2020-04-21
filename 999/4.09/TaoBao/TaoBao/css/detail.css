@@ -1,0 +1,243 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+body {
+	width: 1200px;
+	margin: auto;
+	background-color: #ededed;
+}
+.main {
+	width: 1200px;
+	left: 50%;
+	border: 1px red solid;
+}
+.main::after {
+	content: '';
+	width: 0px;
+	height: 0;
+	display: block;
+	clear: both;
+}
+/* 页面设置 */
+#content {
+	background-color: #fff;
+	float: left;
+	width: 350px;
+	padding: 20px;
+	margin-right: 20px;
+}
+/* 电商放大镜 */
+#detail {
+	position: relative;
+}
+.smallPic {
+	width: 350px;
+	height: 350px;
+	border: 1px solid #ccc;
+}
+.smallPic img {
+	width: 100%;
+	height: 100%;
+}
+.zoom {
+	position: absolute;
+	z-index: 1;
+	top: 100px;
+	left: 100px;
+	width: 175px;
+	height: 157px;
+	background-color: #d8c5c0;
+	display: none;
+	opacity: 0.5;
+}
+.bigPic {
+	width: 400px;
+	height: 400px;
+	position: absolute;
+	top: 0;
+	left: 370px;
+	display: none;
+}
+#thumbnail {
+	margin-top: 30px;
+
+	width: 350px;
+	display: flex;
+	justify-content: space-between;
+}
+#thumbnail li {
+	list-style: none;
+	width: 60px;
+	height: 60px;
+}
+#thumbnail li:hover {
+	width: 58px;
+	height: 58px;
+	border: 1px orangered solid;
+}
+#thumbnail img {
+	width: 100%;
+	height: 100%;
+}
+/* 电商放大镜 */
+.order {
+	display: flex;
+	justify-content: space-between;
+	float: right;
+	width: 790px;
+	height: 200px;
+}
+.order_left {
+	width: 540px;
+	margin-right: 10px;
+}
+.order_left li {
+	padding: 10px;
+}
+.title {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	line-height: 22px;
+	font-weight: bold;
+}
+/*  */
+.jiaGe {
+	background-color: #fbf2e8;
+	line-height: 36px;
+	color: #666;
+	font-size: 14px;
+}
+.jiaGe p::before {
+	font-size: 14px;
+	font-family: '宋体';
+	color: #333;
+	display: block;
+	float: left;
+}
+.jiaGe div:nth-child(1) {
+	position: relative;
+	z-index: -1;
+}
+.jiaGe div:nth-child(1) p {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.jiaGe > div p span {
+	height: 22px;
+	line-height: 14px !important;
+}
+.jiaGe div:nth-child(1)::before {
+	content: '价格';
+}
+.jiaGe p:nth-child(2)::before {
+	content: '淘宝价';
+}
+.jiaGe p:nth-child(2) span:nth-child(1) {
+	display: inline-block;
+	border-radius: 4px;
+	padding: 2px 4px;
+	margin: 0 4px;
+	color: #fff;
+	line-height: 20px;
+	background-color: #e48f24;
+}
+/*  */
+.youHui p:nth-child(1)::before {
+	content: '优惠';
+}
+.youHui p::before {
+	font-size: 14px;
+	font-family: '宋体';
+	color: #333;
+	display: block;
+	float: left;
+}
+.youHui {
+	line-height: 36px;
+	color: #666;
+	font-size: 14px;
+	background-color: #fdf9f5;
+}
+.youHui span {
+	border-radius: 4px;
+	padding: 2px 4px;
+	margin: 0 4px;
+	color: #db4d00;
+	border: 1px solid #db4d00;
+}
+/*  */
+.faHuo::before {
+	content: '发货时间';
+}
+.faHuo {
+	font-size: 14px;
+	font-family: '宋体';
+	background-color: #f9f8ff;
+}
+/*  */
+.peiSong::before {
+	content: '配送';
+}
+.peiSong {
+	font-size: 14px;
+	font-family: '宋体';
+	background-color: #fff;
+}
+/*  */
+.fenLei::before {
+	content: '分类';
+}
+.fenLei {
+	font-size: 14px;
+	font-family: '宋体';
+	background-color: #fff;
+}
+.fenLei span {
+	border: 1px #999 solid;
+	padding: 4px;
+	margin: 4px;
+	border-radius: 4px;
+}
+.fenLei span:nth-child(1) {
+	margin-left: 0;
+}
+/*  */
+.rongLiang {
+	font-size: 14px;
+	font-family: '宋体';
+	background-color: #fff;
+}
+.rongLiang::before {
+	content: '容量';
+}
+/*  */
+.shuLiang::before {
+	content: '数量';
+}
+.shuLiang {
+	font-size: 14px;
+	font-family: '宋体';
+	background-color: #fff;
+}
+.shuLiang span:nth-child(2) {
+	border: 1px #999 solid;
+	padding: 4px 16px;
+	margin: 4px;
+	border-radius: 4px;
+}
+.shuLiang span:nth-child(1),
+.shuLiang span:nth-child(3) {
+	border: 1px #999 solid;
+	padding: 4px;
+	margin: 4px;
+	border-radius: 4px;
+}
+.order_right {
+	width: 230px;
+}
+
+/* 订单设置 */

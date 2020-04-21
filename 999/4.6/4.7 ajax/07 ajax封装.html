@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+		   /* var $={
+			    ajax:function(options){
+//			    	console.log(Option)
+			    	var url=options.url;//得到的地址
+			    	if (url===undefined){
+			    		throw new Error("ajax必须写url");
+			    		return;
+			    	}
+			    	var type=options.type||"get";//表示默认get请求
+			    	var datatype=options.datatype||"string";
+			    	var xhr=null;
+			    	if (window.XMLHttpRequest){
+			    		xhr=new XMLHttpRequest();
+			    	}else{
+			    		xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			    	}
+			    	xhr.onreadystatechange=function(){
+			    		if (xhr.readyState==4){
+			    			if (xhr.status>=200&&xhr.status<300||xhr.status==304){
+			    				if ((typeof options.success)==="function"){
+			    					var response="";
+			    					if (datatype=="string"){
+			    						response=xhr.responseText;
+			    					}else if(datatype=="json"){
+			    						response=JSON.parse(xhr.responseText);
+			    					}
+			    					options.success(response);
+			    				}
+			    			}
+			    		}
+			    	}
+			    	xhr.open(type,url,true);
+			    	xhr.send(null);
+			    	
+			    }
+		    }
+			/*$.ajax({
+				type:"get",
+				url:"后台数据接口",
+				async:true,
+				success:function(response){
+					console.log(response)
+				}
+			});*/
+			/*$.ajax({
+				"type":"get",
+				"url":"json/guoji.json",
+				"async":true,
+				"datatype":"json",
+				"success":function(response){
+					console.log(response)
+				}
+			});*/
+			
+			
+			
+			
+			var $={
+			    ajax:function(options){
+			    	var url=options.url;
+			    	if (url===undefined){
+			    		throw new Error("ajax必须写url");
+			    		return;
+			    	}
+			    	var type=options.type||"get";
+			    	var datatype=options.datatype||"string";
+			    	var xhr=null;
+			    	if (window.XMLHttpRequest){
+			    		xhr=new XMLHttpRequest();
+			    	}else{
+			    		xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			    	}
+			    	xhr.onreadystatechange=function(){
+			    		if (xhr.readyState==4){
+			    			if (xhr.status>=200&&xhr.status<300||xhr.status==304){
+			    				if ((typeof options.success)==="function"){
+			    					var response="";
+			    					if (datatype=="string"){
+			    						response=xhr.responseText;
+			    					}else if(datatype=="json"){
+			    						response=JSON.parse(xhr.responseText);
+			    					}
+			    					options.success(response);
+			    				}
+			    			}
+			    		}
+			    	}
+			    	xhr.open(type,url,true);
+			    	xhr.send(null);
+			    	
+			    }
+		    }
+			
+			$.ajax({
+				"type":"get",
+				"url":"json/caijing.json",
+				"datatype":"json",
+				"success":function(response){
+					console.log(response)
+				}
+			});
+		</script>
+	</body>
+</html>

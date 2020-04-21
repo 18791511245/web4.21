@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		//首页轮播图；
+		$.ajax({
+			type: 'get',
+			async: true,
+			url: 'http://127.0.0.1/w/website/bannerList',
+			success: function (response) {
+				let data = response.data;
+				// console.log(data);
+				let showBox = document.getElementById('showBox');
+				let boxStr = '';
+				for (let i = 0; i < data.length; i++) {
+					boxStr += `
+						<div>
+							<a href="${data[i].linkUrl}"><img src="${data[i].img}"/></a>
+							</div>`;
+					showBox.innerHTML = boxStr;
+				}
+			},
+		});
+		//商品分类
+		$.ajax({
+			type: "get",
+			async: true,
+			url: "http://127.0.0.1/w/website/findGoodsTypeList",
+			success: function (response) {
+				let data = response.data
+				let market = document.getElementById('market');
+				let marStr = '';
+				for (let i = 0; i < data.length; i++) {
+					marStr += `
+					<div class="market_item">
+						<span><a href="class.html?name=${data[i].name}">${data[i].name}</a></span>
+						<img src="${data[i].icon}">
+						<p>更新于：${data[i].updateDate}</p>
+					</div>
+					`;
+					market.innerHTML = marStr;
+				}
+				operatePage()
+			}
+		});
+	</script>
+	<link rel="shortcut icon" href="img/icon_title.jpg" />
+	<link rel="stylesheet" href="css/index.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>TMall.com--理想生活上天猫</title>
+</head>
+
+<body>
+	<header class="top">
+		<div class="main">
+			<article>
+				<span style="margin-left: 0;">喵，欢迎来到天猫</span>
+				<span><a
+						href="https://login.tmall.com/?spm=875.7931836/B.a2226mz.1.3d794265YQeLTw&redirectURL=https%3A%2F%2Fwww.tmall.com%2F%3Fali_trackid%3D2%3Amm_26632258_3504122_55934697%3A1586847121_270_1323125400%26clk1%3D05409f9198b7722309c41f4727d99fcb%26upsid%3D05409f9198b7722309c41f4727d99fcb">请登录</a></span>
+				<span><a href="https://register.tmall.com/?spm=875.7931836/B.a2226mz.2.3d794265HdAlFK">免费注册</a></span>
+			</article>
+			<ul class="top_nav">
+				<li><a href="" title="">我的淘宝</a></li>
+				<li><a href="" title="">购物车</a></li>
+				<li><a href="" title="">收藏夹</a></li>
+				<li><a href="" title="">手机版</a></li>
+				<li><a href="" title="">商家支持</a></li>
+				<li><a href="" title="">网站导航</a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+	</header>
+	<main class="main">
+		<!-- 搜索区域 -->
+		<div class="search">
+			<img src="https://img.alicdn.com/tfs/TB1pw_eBeH2gK0jSZFEXXcqMpXa-290-130.gif" />
+			<p>
+				<input type="text" placeholder="&nbsp&nbsp&nbsp搜索 天猫 商品/品牌/店铺" />
+			</p>
+		</div>
+		<!-- Banner区域 -->
+		<div class="Banner">
+			<div class="menu">
+				<ul class="nav_hor">
+					<li>商品分类</li>
+					<li>天猫会员</li>
+					<li>天猫国际</li>
+					<li>品牌天猫</li>
+					<li>天猫公益</li>
+					<li>天猫会员</li>
+					<li>品牌天猫</li>
+					<li>天猫国际</li>
+				</ul>
+				<!-- 二级菜单 -->
+				<ul class="subMenu">
+					<li class="item">
+						女装 /内衣
+						<ul>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						男装 /运动户外
+						<ul>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+							<li>1-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						手机 /数码 /电脑办公
+						<ul>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+							<li>2-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						生鲜水果
+						<ul>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+							<li>3-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						厨具 /收纳 /宠物
+						<ul>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+							<li>4-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						图书音像
+						<ul>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+							<li>5-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						汽车 /配件 /用品
+						<ul>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+							<li>6-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						大家电 /生活电器
+						<ul>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+							<li>7-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						家纺 /家饰 /鲜花
+						<ul>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+							<li>8-2</li>
+						</ul>
+					</li>
+					<li class="item">
+						腕表 /眼镜 /珠宝饰品
+						<ul>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+							<li>9-2</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<!-- 轮播图 -->
+			<div id="showBox">
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+				<div>
+					<a href=""><img src="" /></a>
+				</div>
+			</div>
+			<!------ 轮播控件 ------>
+			<ul id="ctrl">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+			<!--class="ctrl"-->
+		</div>
+		<!--class="big_box"-->
+		<div class="hr"><img src="https://img.alicdn.com/tfs/TB1n76nBmf2gK0jSZFPXXXsopXa-600-40.png" alt=""></div>
+		</div>
+		<div class="market main" id="market">
+		</div>
+		<div class="btn">
+			<a id='previous' href="javascript:;">上一页</a><a id='next' href="javascript:;">下一页</a>
+		</div>
+	</main>
+	<footer>
+		<ul class="col4 main">
+			<li>
+				<h5>品质保障</h5>
+				<p>品质护航，购物无忧</p>
+			</li>
+			<li>
+				<h5>七天无理由退货</h5>
+				<p>为你提供售后保障</p>
+			</li>
+			<li>
+				<h5>品质保障</h5>
+				<p>呈现不一样的服务</p>
+			</li>
+			<li>
+				<h5>品质保障</h5>
+				<p>您的购物指南</p>
+			</li>
+		</ul>
+		<dl class="links main">
+			<dd>
+				<dl>
+					<dt>购物指南</dt>
+					<dd>免费注册</dd>
+					<dd>开通支付宝</dd>
+					<dd>支付宝充值</dd>
+				</dl>
+			</dd>
+			<dd>
+				<dl>
+					<dt>天猫保障</dt>
+					<dd>发票保障</dd>
+					<dd>售后规则</dd>
+					<dd>缺货赔付</dd>
+				</dl>
+			</dd>
+			<dd>
+				<dl>
+					<dt>支付方式</dt>
+					<dd>快捷支付</dd>
+					<dd>信用卡</dd>
+					<dd>余额宝</dd>
+					<dd>蚂蚁花呗</dd>
+					<dd>货到付款</dd>
+				</dl>
+			</dd>
+			<dd>
+				<dl>
+					<dt>商家服务</dt>
+					<dd>天猫规则</dd>
+					<dd>商家入驻</dd>
+					<dd>商家中心</dd>
+					<dd>天猫智库</dd>
+					<dd>物流服务</dd>
+					<dd>喵言喵语</dd>
+				</dl>
+			</dd>
+			<dl>
+				<dl>
+					<dt>手机天猫</dt>
+					<dd><img src="img/QRcode.png"></dd>
+				</dl>
+			</dl>
+		</dl>
+		<div class="explain">
+			<ul class="about main">
+				<li>关于天猫</li>
+				<li>帮助中心</li>
+				<li>开放平台</li>
+				<li>诚聘英才</li>
+				<li>联系我们</li>
+				<li>网站合作</li>
+				<li>法律声明</li>
+				<li>隐私权政策</li>
+				<li>廉政举报</li>
+				<li>规划意见征集政策</li>
+			</ul>
+			<article class="relLink main">
+				<a href="">阿里巴巴集团 &nbsp;|</a>
+				<a href="">淘宝网 &nbsp;|</a>
+				<a href="">聚划算 &nbsp;|</a>
+				<a href="">阿里巴巴国际交易市场 &nbsp;|</a>
+				<a href="">1688 &nbsp;|</a>
+				<a href="">阿里妈妈 &nbsp;|</a>
+				<a href="">阿里云计算 &nbsp;|</a>
+				<a href="">AliOS &nbsp;|</a>
+				<a href="">阿里通信 &nbsp;|</a>
+				<a href="">万网 &nbsp;|</a>
+				<a href="">高德 &nbsp;|</a>
+				<a href="">UC &nbsp;|</a>
+				<a href="">友盟 &nbsp;|</a>
+				<a href="">虾米 &nbsp;|</a>
+				<a href="">钉钉 &nbsp;|</a>
+				<a href="">支付宝 &nbsp;|</a>
+				<a href="">阿里安全</a>
+			</article>
+			<ul class="records main">
+				<li><span>增值电信业务经营许可证：浙B2一201106</span><span>市场名称登记证：工商网市字3301004119号</span><span>增值电信业务</span><span>增值电信业务</span><span>增值电信业务</span>
+				</li>
+				<li><span>增值电信业务</span><span>增值电信业务经营许可证：浙B2一201106</span><span>增值电信业务</span></li>
+				<li><span>市场名称登记证：工商网市字3301004119号</span><span>违法信息举报</span><span>增值电信业务经营许可证：浙B2一201106</span></li>
+				<li><span>增值电信业务</span><span>市场名称登记证：工商网市字3301004119号</span><span>增值电信业务</span></li>
+			</ul>
+		</div>
+	</footer>
+</body>
+<script src="js/index.js"></script>
+
+</html>

@@ -1,0 +1,109 @@
+* {
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+}
+main
+/* body */
+#classList {
+	max-width: 1200px;
+	margin: 10px auto;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+#classList .item {
+	margin-top: 1em;
+	color: #666;
+	width: 200px;
+	height: 320px;
+	padding: 10px;
+	transition: all ease-in-out 300ms;
+}
+.item:hover {
+	transform: translate3d(0, -10px, 0);
+	box-shadow: 0 0 10px rgba(68, 68, 68, 0.4);
+}
+.item .img {
+	height: 200px;
+	overflow: hidden;
+	width: 200px;
+}
+.item .img img {
+	width: 100%;
+}
+.item .desc {
+	margin: 10px 0;
+	font-size: 13px;
+	color: #666;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.item .price {
+	font-weight: bold;
+	color: #d65903;
+}
+.item .price span {
+	padding: 1px 2px;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #d65903;
+	color: #fff;
+	border-radius: 4px;
+	text-decoration: none;
+}
+.item .price del {
+	font-size: 12px;
+	color: #999;
+	font-weight: normal;
+	padding-left: 10px;
+	text-decoration: line-through;
+}
+.item .ticket {
+	display: inline-block;
+	height: 18px;
+	background: red;
+	font-size: 14px;
+	line-height: 18px;
+	border-radius: 4px;
+	padding: 2px 4px;
+	text-align: center;
+	color: #ffffff;
+}
+.item div * {
+	font-size: 12px;
+	display: block;
+	line-height: 30px;
+}
+.item .shop {
+	float: left;
+}
+.item .sale {
+	float: right;
+}
+/* 分页控制 */
+li.cur {
+	background-color: orange !important;
+}
+#pageCtrl {
+	display: flex;
+	justify-content: space-evenly;
+	width: 350px;
+	margin: auto;
+	text-align: center;
+	line-height: 30px;
+}
+#pageCtrl #previous,
+#pageCtrl #next {
+	width: 48px;
+	padding: 0 4px;
+}
+#pageCtrl li {
+	color: #333;
+	border-radius: 4px;
+	width: 30px;
+	height: 30px;
+	background-color: #ccc;
+}

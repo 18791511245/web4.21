@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="shortcut icon" href="img/icon_title.jpg" />
+		<script src="js/jquery-1.12.3.min.js"></script>
+		<script>
+			var string = window.location.search;
+			var url = getString(string, '?url=', '&text=', '?url=');
+			let uri = getString(string, '&text=', '&logo=', '&text=');
+			var text = decodeURI(uri);
+			var logo = getString(string, '&logo=', '', '&logo=');
+			function getString(string, startStr, endStr, alpha) {
+				let start = string.indexOf(startStr);
+				let end = string.indexOf(endStr);
+				let str = string.slice(start, end).split(alpha);
+				if (startStr.length == 0) {
+					start = 0;
+					str = string.slice(start).split(alpha);
+				}
+				if (endStr == 0) {
+					end = string.length;
+					str = string.slice(start).split(alpha);
+				}
+				return str[1];
+			}
+			// console.log(url, text, logo);
+			$.ajax({
+				type: 'get',
+				url: 'http://127.0.0.1/w/client/checkTBKkl',
+				data: {
+					url: url,
+					text: text,
+					logo: logo,
+				},
+				async: true,
+				success: function (response) {
+					let data =
+						response.data.tbk_tpwd_create_response.data.model;
+					let kouLing = document.getElementById('kouLing');
+					kouLing.innerHTML =
+						'复制这段消息' +
+						'<p>' +
+						data +
+						'</p>' +
+						'打开手机天猫，领取优惠券！';
+				},
+			});
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			html,
+			body {
+				width: 100vw;
+				height: 100vh;
+				position: relative;
+			}
+			* {
+				font-size: 14px;
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			header {
+				display: flex;
+				padding: 2vh;
+				justify-content: space-evenly;
+				text-align: center;
+				height: 4vh;
+				background: red;
+			}
+			.content {
+				display: flex;
+			}
+			.content nav {
+				width: 19vw;
+				background: orange;
+				display: block;
+				height: 81vh;
+			}
+			.content nav ul {
+				text-align: center;
+				height: 84vh;
+				display: flex;
+				flex-direction: column-reverse;
+				justify-content: space-evenly;
+			}
+			.content article {
+				width: 81vw;
+				background: #666;
+			}
+			.content article ul {
+				display: flex;
+				justify-content: space-evenly;
+			}
+			footer {
+				height: 8vh;
+				background-color: bisque;
+			}
+			footer ul {
+				display: flex;
+				justify-content: space-evenly;
+			}
+			footer ul li {
+				border-left: 1px #999 solid;
+				padding: 0 14px;
+				line-height: 8vh;
+			}
+			#kouLing {
+				width: 40vw;
+				height: 20vh;
+				padding: 10px;
+				color: #fff;
+				border-radius: 20px;
+				background: red;
+				position: absolute;
+				margin-left: -18%;
+				margin-top: -18%;
+				top: 50%;
+				left: 50%;
+				box-shadow: 0 0 50px #00000070;
+			}
+			.kouLing {
+				top: 0;
+				left: 0;
+				position: absolute;
+				z-index: 2;
+				width: 100vw;
+				height: 97vh;
+				background: #00000070;
+			}
+		</style>
+		<title>淘!口令</title>
+	</head>
+	<body>
+		<header class="search">
+			<span>二维码</span>
+			<input
+				type="search"
+				name=""
+				id=""
+				placeholder="&nbsp;&nbsp;三只松鼠"
+			/>
+			<span>消息</span>
+		</header>
+		<main id="main">
+			<div class="content">
+				<nav>
+					<ul>
+						<li>家电</li>
+						<li>数码</li>
+						<li>箱包</li>
+						<li>服装</li>
+						<li>商城</li>
+						<li>限时购</li>
+					</ul>
+				</nav>
+				<article>
+					<div class="kouLing"><span id="kouLing"></span></div>
+					<ul>
+						<li>轻薄游戏本</li>
+						<li>商务本</li>
+						<li>华为Mate40</li>
+						<li>更多推荐</li>
+					</ul>
+					<div class="banner"></div>
+				</article>
+			</div>
+		</main>
+		<footer>
+			<ul>
+				<li style="border: none;">推荐</li>
+				<li>点评</li>
+				<li>会员店</li>
+				<li>购物车</li>
+				<li>我</li>
+			</ul>
+		</footer>
+	</body>
+</html>

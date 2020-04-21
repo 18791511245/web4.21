@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+	<script>
+		//string；字符串；
+		// startStr；起始字符串；
+		// endStr；结束字符串；
+		// alpha；分隔符；
+		function getString(string, startStr, endStr, alpha) {
+			let start = string.indexOf(startStr);
+			let end = string.indexOf(endStr);
+			let str = string.slice(start, end).split(alpha);
+			if (startStr.length == 0) {
+				start = 0;
+				str = string.slice(start).split(alpha);
+			}
+			if (endStr == 0) {
+				end = string.length;
+				str = string.slice(start).split(alpha);
+			}
+			return str[1];
+		}
+	</script>
+</html>

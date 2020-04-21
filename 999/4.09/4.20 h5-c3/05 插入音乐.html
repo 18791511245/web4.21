@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<embed src="img/枯木逢春 - 我在昨天的梦里又看见了你.mp3"></embed>-->
+		<!--<video src="img/枯木逢春 - 我在昨天的梦里又看见了你.mp3" autoplay controls></video>-->
+		<audio controls class="audiplay">
+			<source src="img/枯木逢春 - 我在昨天的梦里又看见了你.mp3"></source>
+		</audio>
+		<input type="button"  id="play" value="播放" />
+		<input type="button"  id="muted" value="静音" />
+		<script type="text/javascript">
+			var audiplay=document.querySelector(".audiplay");
+			var play=document.querySelector("#play");
+			var muted=document.querySelector("#muted");
+			play.onclick=function(){
+				if (play.value=="播放"){
+					this.value="暂停";
+					audiplay.play();
+					
+				}else{
+					this.value="播放";
+					audiplay.play();
+				}
+			}
+		</script>
+	</body>
+</html>

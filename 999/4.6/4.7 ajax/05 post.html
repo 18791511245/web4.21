@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1 id="oh">===</h1>
+		<input type="button"  id="btn" value="点点" />
+		<script type="text/javascript">
+			var oh=document.getElementById("oh");
+			var btn=document.getElementById("btn");
+			btn.onclick=function(){
+				var xhr=new XMLHttpRequest();
+				xhr.onreadystatechange=function(){
+					if(xhr.readyState==4){
+						console.log(xhr.responseText);
+					}
+				}
+				xhr.open("post","json/caijing.json",true);
+				xhr.setRequestHeader("Contet-Type","application/x-www-form-urlencoded");
+				xhr.send("name="+encodeURIComponent("张三")+"&age=18");
+			}
+		</script>
+	</body>
+</html>

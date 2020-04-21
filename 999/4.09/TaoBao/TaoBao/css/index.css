@@ -1,0 +1,421 @@
+* {
+	padding: 0;
+	margin: 0;
+	color: #666;
+	font-size: 14px;
+	text-decoration: none;
+	list-style: none;
+}
+body {
+	display: flex;
+	flex-direction: column;
+}
+.main {
+	width: 1200px;
+	margin: 0 auto;
+}
+.clearfix {
+	clear: both;
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* 顶部功能区 */
+.top {
+	background-color: #f2f2f2;
+	width: 100%;
+}
+.top > * {
+	line-height: 30px;
+	height: 30px;
+}
+.top article {
+	float: left;
+}
+.top article span {
+	margin: 0 10px;
+	font-size: 12px;
+}
+.top article span a {
+	font-size: 12px;
+}
+.top .top_nav {
+	float: right;
+	/* width: 400px; */
+	display: flex;
+	justify-content: space-between;
+}
+.top li {
+	list-style: none;
+	padding-left: 4px;
+}
+.top li a {
+	font-size: 12px;
+	display: inline-block;
+}
+.top li::after {
+	content: '|';
+	display: inline-block;
+	padding: 0 10px;
+}
+.top li:last-child:after {
+	content: '';
+	padding: 0;
+}
+.top_nav span {
+	padding-left: 5px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	background-color: red;
+}
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/*  */
+/* 搜索框 */
+.search {
+	line-height: 140px;
+	margin: 0 auto;
+	height: 140px;
+	width: 1000px;
+	display: flex;
+	justify-content: space-evenly;
+}
+.search::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.search input {
+	outline: none;
+	height: 34px;
+	width: 500px;
+	/* border: 1px #ccc solid; */
+}
+
+.search p::after {
+	position: relative;
+	background-color: red;
+	/* top: 2px; */
+	left: -4px;
+	content: '搜索';
+	color: #fff;
+	display: inline-block;
+	height: 38px;
+	cursor: pointer;
+	width: 50px;
+	text-align: center;
+	line-height: 36px;
+}
+.search img {
+	height: 140px;
+}
+/* Banner */
+/*  */
+/*  */
+.menu {
+	/* position: absolute;
+	top: 0;
+	left: 50%; */
+	height: 40px;
+	width: 1200px;
+	margin-left: -50%;
+}
+.nav_hor {
+	position: absolute;
+	left: 50%;
+	margin-left: -600px;
+	display: flex;
+	background-color: #efefef;
+	color: #333;
+	justify-content: space-between;
+	width: 1200px;
+}
+.nav_hor li {
+	padding: 5px 47px;
+	height: 30px;
+	line-height: 30px;
+	width: 64px;
+}
+.nav_hor li:hover {
+	color: red;
+	cursor: pointer;
+}
+/* 二级菜单 */
+.subMenu {
+	position: relative;
+	width: 240px;
+	z-index: 2;
+	top: 40px;
+	left: 0;
+}
+
+.subMenu .item {
+	color: white;
+	text-indent: 1em;
+	width: 240px;
+	line-height: 50px;
+	height: 50px;
+	background: #00000066;
+}
+/* 三级菜单 */
+.subMenu .item ul {
+	background: white;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 240px;
+	width: 700px;
+	height: 50px;
+}
+.item:hover {
+	background: rgba(255, 255, 255, 0.178);
+	color: #666;
+}
+.subMenu .item:hover ul {
+	display: block;
+}
+.item ul li {
+	columns: #666666;
+	line-height: 50px;
+	height: 50px;
+	background: white;
+}
+.item ul li:hover {
+	color: red;
+	background-color: #efefef;
+}
+.Banner {
+	position: relative;
+	width: 1200px;
+	margin: auto;
+	height: 540px;
+}
+#showBox {
+	position: absolute;
+	width: 1200px;
+	z-index: 0;
+	top: 40px;
+	z-index: -1;
+	left: 0;
+}
+/****** 显示轮播图的盒子及其控件 *****/
+#showBox {
+	width: 1200px;
+	height: 500px;
+	background: #efefef;
+	overflow: hidden;
+	position: absolute;
+}
+#showBox a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+#showBox div {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: auto;
+	height: 100%;
+}
+#showBox div a img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+#ctrl {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	margin-left: -100px;
+	z-index: 1;
+	width: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+#ctrl li.Cur {
+	background-color: red;
+	cursor: pointer;
+}
+#ctrl li {
+	width: 25px;
+	height: 5px;
+	background-color: whitesmoke;
+}
+/* 圆点控制 */
+.market {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	height: 700px;
+	overflow: hidden;
+	flex-direction: row;
+}
+.market_item {
+	position: relative;
+	z-index: 0;
+	border: 1px orange solid;
+	width: 238px;
+	margin: 10px;
+	padding: 20px 20px 30px 20px;
+	transition: all 0.3s ease-in-out;
+	height: 280px;
+	box-shadow: 0 0 10px rgba(125, 125, 125, 0.13);
+}
+.market_item:hover {
+	transform: translate3d(0, -10px, 0);
+	box-shadow: 0 0 10px rgba(68, 68, 68, 0.4);
+}
+.market_item:hover span {
+	height: 86%;
+	visibility: visible;
+	font-size: 70px;
+}
+.market_item span {
+	transition: all 0.3s ease-in-out;
+	visibility: hidden;
+	position: absolute;
+	display: block;
+	width: 85%;
+	height: 0;
+	background: rgba(0, 0, 0, 0.3);
+	font-weight: 700;
+	line-height: 340%;
+	font-size: 0;
+	text-align: center;
+}
+.market_item span a {
+	color: #fff;
+	font-size: 70px;
+}
+.market_item img {
+	margin: 20px auto 0;
+	width: 95%;
+}
+.market_item span a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.market_item p {
+	color: orangered;
+	font-family: '宋体';
+	text-align: center;
+	font-size: 14px;
+	margin-top: 40px;
+}
+/* 水平分割线 */
+.hr {
+	display: flex;
+	justify-content: center;
+	margin: 30px 0;
+}
+.hr img {
+	display: block;
+}
+.btn {
+	display: flex;
+	justify-content: center;
+}
+a.disabled {
+	color: #aaa !important;
+	background-color: #efefef !important;
+}
+.btn a {
+	cursor: pointer;
+	display: block;
+	background: #cccccc;
+	color: #000;
+	text-align: center;
+	line-height: 24px;
+	font-size: 14px;
+	padding: 5px;
+	margin: 20px;
+	width: 68px;
+	height: 24px;
+	border-radius: 4px;
+}
+/* 页脚 */
+footer {
+	width: 100%;
+}
+.col4 {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #ccc;
+}
+.col4 h5 {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+.col4 li {
+	height: 30px;
+	padding: 50px 0 50px 30px;
+	background: url(img/icon_title.jpg) no-repeat;
+	background-position: 0 0;
+}
+
+.col4 p {
+	color: #999;
+	font-size: 14px;
+}
+
+.links {
+	padding: 30px 0 20px 0;
+	display: flex;
+	justify-content: space-between;
+}
+.links dt {
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 16px;
+}
+.links dd {
+	margin-bottom: 3px;
+}
+.links img {
+	margin: -10px 0 0 -10px;
+	width: 160px;
+}
+.explain {
+	padding: 10px 0;
+	background: #000000;
+}
+.about {
+	display: flex;
+}
+.about li {
+	margin: 10px 10px 0 10px;
+	font-size: 14px;
+	color: #efefef;
+}
+.about li:nth-child(1) {
+	margin-left: 0;
+}
+.relLink a {
+	display: inline-block;
+	color: #eee;
+	margin: 6px 0;
+}
+.records li {
+	display: flex;
+	width: 100%;
+}
+.records span {
+	font-size: 12px;
+	color: #aaa;
+	margin: 4px 20px;
+}
+.records span:nth-child(1) {
+	margin-left: 0 !important;
+}

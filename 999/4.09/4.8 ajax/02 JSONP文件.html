@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button"  id="btn" value="点点" />
+		<script type="text/javascript">
+			function fun(obj){
+				console.log(obj.result[2].xingming)
+			}
+		</script>
+		<script type="text/javascript">
+			var btn=document.getElementById("btn");
+			btn.onclick=function(){
+				var scriptObj=document.createElement("script");
+				document.body.appendChild("script")
+			}
+			scriptObj.src="json.txt";
+		</script>
+	</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="shortcut icon" href="img/icon_title.jpg" />
+	<link rel="stylesheet" href="css/detail.css" />
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		var itemId = window.location.search.substr(1).split('=')[1]; //获取地址
+		$.ajax({
+			type: 'get',
+			url: 'http://127.0.0.1/w/website/findGoodsDetail',
+			data: {
+				info: itemId,
+			},
+			async: true,
+			success: function (response) {
+				let data =
+					response.data.detail.tbk_item_info_get_response.results.n_tbk_item[0];
+				console.log(data);
+				let content = document.querySelector(`[id="content"]`);
+				content.innerHTML = `
+					<div id="detail">
+						<div class="smallPic" id="smallPic">
+							<img src="${data.pict_url}" />
+							<div class="zoom" id="zoom"></div>
+						</div>
+						<div class="bigPic" style="background:url(${data.pict_url})" id="bigPic"></div>
+					</div>
+					<ul id="thumbnail">
+						<li><img src="${data.small_images.string[0]}" /></li>
+						<li><img src="${data.small_images.string[1]}" /></li>
+						<li><img src="${data.small_images.string[2]}" /></li>
+						<li><img src="${data.small_images.string[3]}" /></li>
+					</ul>
+						`;
+				let order = document.getElementsByClassName('order')[0];
+				order.innerHTML = `
+					<div class="order">
+				<ul class="order_left">
+					<li class="title">
+						${data.title}
+					</li>
+					<li class="jiaGe">
+						<div>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2054.00-2096
+							<p>
+								<span>累计评论1</span>
+								<span>交易成功1</span>
+							</p>
+						</div>
+						<p>
+							&nbsp;&nbsp;&nbsp;￥${data.zk_final_price}<span>回馈客户</span>
+						</p>
+					</li>
+					<li class="youHui">
+						<p>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="kouling.html?url=${data.itemId}">淘金币可优惠</a>
+						</p>
+
+						<p>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>跨店减满</span>每满200减去10
+						</p>
+						<p>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>本店活动</span>每满99送购物券10
+						</p>
+					</li>
+					<li class="faHuo">
+						&nbsp;付款后90天后发货
+					</li>
+					<li class="peiSong">
+						&nbsp;&nbsp;&nbsp;北京至西安免邮费
+					</li>
+					<li class="fenLei">
+						&nbsp;&nbsp;&nbsp;<span>色美</span><span>迷彩</span
+						><span>色美</span><span>迷彩</span><span>色美</span
+						><span>迷彩</span>
+					</li>
+					<li class="rongLiang">&nbsp;&nbsp;&nbsp; 100L</li>
+					<li class="shuLiang">
+						&nbsp;&nbsp;&nbsp;<span>+</span><span>1</span
+						><span>-</span>
+					</li>
+					<li class="fenQi">
+						<span>2*300</span><span>3*200</span><span>4*150</span
+						><span>5*120</span><span>6*100</span>
+					</li>
+					<li>
+						<button>立即购买</button><button>加入购物车</button>
+					</li>
+					<li>无忧退货 承诺退货</li>
+					<li class="zhiFu">
+						<span>蚂蚁花呗</span>
+						<span>蚂蚁花呗</span>
+						<span>蚂蚁花呗</span>
+					</li>
+				</ul>
+				<div class="order_right">金牌店家</div>
+			</div>
+					`;
+				detailRender();
+			},
+		});
+		//细节渲染
+		function detailRender() {
+			$('#thumbnail li').click(function () {
+				let newSrc = this.getElementsByTagName('img')[0].src;
+				let oldSrcSmall = document
+					.getElementById('smallPic')
+					.getElementsByTagName('img')[0];
+				// let bigPic = document.getElementById('bigPic');
+				oldSrcSmall.src = newSrc;
+				bigPic.style.background = 'url(' + newSrc + ')';
+				console.log(oldSrcSmall);
+			});
+			var smallPic = document.getElementById('smallPic');
+			var smallPic = document.getElementById('smallPic');
+			var zoom = document.getElementById('zoom');
+			var bigPic = document.getElementById('bigPic');
+			// 比例:大图800*800 大图的盒子400*400
+			// 小盒子350*350 放大镜175*175
+			// 所以放大镜总行程175, 大图的总行程400
+			var rate = 400 / 175;
+			smallPic.onmouseover = function () {
+				zoom.style.display = 'block';
+				bigPic.style.display = 'block';
+			};
+			smallPic.onmouseout = function () {
+				zoom.style.display = 'none';
+				bigPic.style.display = 'none';
+			};
+			smallPic.onmousemove = function (event) {
+				event = event || window.event;
+				var scrollTop =
+					document.body.scrollTop ||
+					document.documentElement.scrollTop;
+				var scrollLeft =
+					document.body.scrollLeft ||
+					document.documentElement.scrollLeft;
+				var x =
+					event.clientX -
+					(getAllLeft(smallPic) - scrollLeft) -
+					87;
+				var y =
+					event.clientY - (getAllTop(smallPic) - scrollTop) - 87;
+				if (x < 0) {
+					x = 0;
+				} else if (x > 175) {
+					x = 175;
+				}
+				if (y < 0) {
+					y = 0;
+				} else if (y > 175) {
+					y = 175;
+				}
+				//移动放大镜
+				zoom.style.left = x + 'px';
+				zoom.style.top = y + 'px';
+				bigPic.style.backgroundPosition =
+					-x * rate + 'px ' + -y * rate + 'px';
+			};
+			function getAllTop(obj) {
+				//累加器  offsetTop的值
+				var allTop = obj.offsetTop;
+				//当前正在计算高度的元素
+				var currentObj = obj;
+				while (currentObj == currentObj.offsetParent) {
+					allTop += currentObj.offsetTop;
+				}
+				return allTop;
+			}
+			function getAllLeft(obj) {
+				//累加器  offsetTop的值
+				var allLeft = obj.offsetLeft;
+				//当前正在计算高度的元素
+				var currentObj = obj;
+				while (currentObj == currentObj.offsetParent) {
+					allLeft += currentObj.offsetLeft;
+				}
+				return allLeft;
+			}
+		}
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>商品详情</title>
+</head>
+
+<body>
+	<main class="main">
+		<div id="content">
+			<div id="detail">
+				<!-- <div class="smallPic" id="smallPic">
+						<img src="" />
+						<div class="zoom" id="zoom">哇阿卡卡</div>
+						</div>
+					<div class="bigPic" id="bigPic"></div> -->
+			</div>
+		</div>
+		<div class="order">
+			<ul class="order_left">
+				<li class="title">
+					北京至西安免邮费北京至西安免邮费北京至西安免邮费北京至西安免邮费北京至西安免邮费
+				</li>
+				<li class="jiaGe">
+					<div>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2054.00-2096
+						<p>
+							<span>累计评论1</span>
+							<span>交易成功1</span>
+						</p>
+					</div>
+					<p>
+						&nbsp;&nbsp;&nbsp;￥1936-2806<span>回馈客户</span>
+					</p>
+				</li>
+				<li class="youHui">
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;淘金币可优惠58
+					</p>
+
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>跨店减满</span>每满200减去10
+					</p>
+					<p>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>本店活动</span>每满99送购物券10
+					</p>
+				</li>
+				<li class="faHuo">
+					&nbsp;付款后90天后发货
+				</li>
+				<li class="peiSong">
+					&nbsp;&nbsp;&nbsp;北京至西安免邮费
+				</li>
+				<li class="fenLei">
+					&nbsp;&nbsp;&nbsp;<span>色美</span><span>迷彩</span><span>色美</span><span>迷彩</span><span>色美</span><span>迷彩</span>
+				</li>
+				<li class="rongLiang">&nbsp;&nbsp;&nbsp; 100L</li>
+				<li class="shuLiang">
+					&nbsp;&nbsp;&nbsp;<span>+</span><span>1</span><span>-</span>
+				</li>
+				<li class="fenQi">
+					<span>2*300</span><span>3*200</span><span>4*150</span><span>5*120</span><span>6*100</span>
+				</li>
+				<li>
+					<button>立即购买</button><button>加入购物车</button>
+				</li>
+				<li>无忧退货 承诺退货</li>
+				<li class="zhiFu">
+					<span>蚂蚁花呗</span>
+					<span>蚂蚁花呗</span>
+					<span>蚂蚁花呗</span>
+				</li>
+			</ul>
+			<div class="order_right">金牌店家</div>
+		</div>
+	</main>
+</body>
+<script></script>
+
+</html>

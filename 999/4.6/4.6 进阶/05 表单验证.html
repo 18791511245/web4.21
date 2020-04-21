@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*window.onload=function(){
+				var form=document.getElementById("form");
+				var shoujihaoTxt=document.getElementById("shoujihao");
+				var wxxtxt=document.getElementById("wechat");
+				form.onsubmit=function(){
+					var shoujihao=shoujihaoTxt.value;
+					var wechat=wxxtxt.value;
+					if (!/^1[\d]{10}$/.test(shoujihao)){
+						alert("请输入正确的手机号");
+						return false;
+					}
+					if (!/^1[\d]{5,11}$/.test(wechat)){
+						alert("请输入正确的微信号");
+						return false;
+					}
+					alert("登录成功")
+					return true;
+				}
+			}*/
+			
+			window.onload=function(){
+				var form=document.getElementById("form");
+				var shoujihaoTxt=document.getElementById("shoujihao");
+				var wxxtxt=document.getElementById("wechat");
+				form.onsubmit=function(){
+					var shoujihao=shoujihaoTxt.value;
+					var wechat=wxxtxt.value;
+					if (!/^1[\d]{10}$/.test(shoujihao)){
+						alert("请输入正确的手机号");
+						return false;
+					}
+					if (!/^1[\d]{5,11}$/.test(wechat)){
+						alert("请输入正确的微信号");
+						return false;
+					}
+					alert("登录成功")
+					return true;
+				}
+			}
+		</script>
+		<form action="1.php" id="form">
+			<p>手机号：<input type="text" id="shoujihao"></p>
+			<p>微信号：<input type="text" id="wechat"></p>
+			<input type="submit" name="" id="tj" value="提交" />
+		</form>
+	</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*var str="昨天天气时%tianqi%，我的心情是%xinqing%";
+			var divt={
+				"tianqi":"风和日丽",
+				"xinqing":"高兴的"
+			}
+			function compile(templateString,dictionary){
+				return templateString.replace(/\%([a-z]+)\%/g,function(match,$1,index,string){
+					return dictionary[$1];
+				})
+			}
+			var str=compile(str,divt);
+			console.log(str);*/
+			
+			var str="昨天天气时%tianqi%，我的心情是%xinqing%";
+			var divt={
+				"tianqi":"风和日丽",
+				"xinqing":"高兴的"
+			}
+			function compile(templateString,dictionary){
+				return templateString.replace(/\%([a-z]+)\%/g,function(match,$1,index,string){
+					return dictionary[$1];
+				})
+			}
+			var str=compile(str,divt);
+			console.log(str);
+		</script>
+	</body>
+</html>

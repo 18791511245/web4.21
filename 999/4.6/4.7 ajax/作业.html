@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+			#box{
+				width: 1000px;
+				height: 600px;
+				/*overflow: hidden;*/
+				margin: 50px auto;
+				border: 1px solid black;
+			}
+			.item{
+				height: 200px;
+				width: 200px;
+				padding: 10px;
+				line-height: 30px;
+				border-bottom: 1px dashed #ccc;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="box">
+		
+	</div>
+		<script type="text/javascript">
+			var $={
+			    ajax:function(options){
+			    	var url=options.url;
+			    	if (url===undefined){
+			    		throw new Error("ajax必须写url");
+			    		return;
+			    	}
+			    	var type=options.type||"get";
+			    	var datatype=options.datatype||"string";
+			    	var xhr=null;
+			    	if (window.XMLHttpRequest){
+			    		xhr=new XMLHttpRequest();
+			    	}else{
+			    		xhr=new ActiveXObject("Microsoft.XMLHTTP");
+			    	}
+			    	xhr.onreadystatechange=function(){
+			    		if (xhr.readyState==4){
+			    			if (xhr.status>=200&&xhr.status<300||xhr.status==304){
+			    				if ((typeof options.success)==="function"){
+			    					var response="";
+			    					if (datatype=="string"){
+			    						response=xhr.responseText;
+			    					}else if(datatype=="json"){
+			    						response=JSON.parse(xhr.responseText);
+			    					}
+			    					options.success(response);
+			    				}
+			    			}
+			    		}
+			    	}
+			    	xhr.open(type,url,true);
+			    	xhr.send(null);
+			    	
+			    }
+		    }
+			
+			var box=document.getElementById("box");
+			$.ajax({
+				type:"get",
+				url:"http://route.showapi.com/905-1?showapi_appid=169840&showapi_sign=08ffb83b9f9b40b9bfd04f66a586656f",
+				async:true,
+				datatype:"json",
+				success:function(response){
+					console.log(response)
+					var data=response.showapi_res_body.data;
+					var str='';
+					for (var i=0;i<data.length;i++){
+						str+=`
+						<div class="item">
+				             <p>${data[i].parts}</p>
+			                <p>${data[i].words}</p>
+				             
+			            </div>`
+					}
+					box.innerHTML=str;
+				}
+			});
+		</script>
+	</body>
+</html>

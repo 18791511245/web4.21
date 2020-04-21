@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="shortcut icon" href="img/icon_title.jpg" />
+	<link rel="stylesheet" href="css/class.css" />
+	<script src="js/jquery-1.12.3.min.js"></script>
+	<script>
+		var nameValue = window.location.search.substr(1).split('=')[1]; //获取地址
+		Ajax = $.ajax({
+			type: 'get',
+			url: 'http://127.0.0.1/w/website/findGoodsList',
+			async: true,
+			data: {
+				platId: 'd0a500ecf8ab41aa9ffe8e18ac6419e1',
+				info: nameValue,
+				pageNo: num,
+			},
+			success: function (response) {
+				let data =
+					response.data.tbk_dg_material_optional_response
+						.result_list.map_data;
+				let str = '';
+				let classList = document.getElementById('classList');
+				for (let i = 0; i < data.length; i++) {
+					str += `
+					<article class="item">
+						<a href="detail.html?item_id=${data[i].item_id}">
+							<div class="img"><img src="${data[i].pict_url}" title="${data[i].category_name}" /></div>
+							<span class="price">￥${data[i].zk_final_price}</span>
+							<p class="desc">${data[i].title}</p>
+							<a href="kouling.html?url=https:${data[i].coupon_share_url + "&" + "text" + "=" + data[i].title + "&" + "logo" + "=" + data[i].pict_url}
+							" class="ticket">${data[i].coupon_info}</a>
+							<div>
+								<span class="shop">${data[i].shop_title}</span>
+								<span class="sale">${data[i].provcity}</span>
+							</div>
+						</a>
+					</article>
+				`;
+				}
+				classList.innerHTML = str;
+				//添加券的条件验证
+				const ticket = document.querySelectorAll(`[class="ticket"]`);
+				let arr = Array.from(ticket);
+				// for (const i in arr) {
+				for (let i = 0; i < arr.length; i++) {
+					if (arr[i].innerHTML == '') {
+						arr[i].style.padding = 0 + 'px';
+						arr[i].style.width = 0 + 'px';
+
+					}
+				}
+
+			},
+		});
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>商品分类列表</title>
+</head>
+
+<body>
+	<header class="top">
+		<div class="main">
+			<article>
+				<span style="margin-left: 0;">喵，欢迎来到天猫</span>
+				<span><a href="login.html">请登录</a></span>
+				<span><a href="register.html">免费注册</a></span>
+			</article>
+			<ul class="top_nav">
+				<li><a href="" title="">我的淘宝</a></li>
+				<li><a href="" title="">购物车</a></li>
+				<li><a href="" title="">收藏夹</a></li>
+				<li><a href="" title="">手机版</a></li>
+				<li><a href="" title="">商家支持</a></li>
+				<li><a href="" title="">网站导航</a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+	</header>
+	<main>
+		<div class="search">
+			<img src="https://img.alicdn.com/tfs/TB1MaLKRXXXXXaWXFXXXXXXXXXX-480-260.png" />
+			<p>
+				<input type="text" placeholder="&nbsp&nbsp&nbsp搜索 天猫 商品/品牌/店铺" />
+			</p>
+		</div>
+		<!-- banner区域 -->
+		<div class="menu">
+			<ul class="nav_hor">
+				<li>商品分类</li>
+				<li>天猫会员</li>
+				<li>天猫国际</li>
+				<li>品牌天猫</li>
+				<li>天猫公益</li>
+				<li>天猫会员</li>
+				<li>品牌天猫</li>
+				<li>天猫国际</li>
+			</ul>
+		</div>
+		<div id="classList">
+		</div>
+		<ul id="pageCtrl">
+			<li class="cur">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>···</li>
+			<li>7</li>
+			<li>8</li>
+			<li id="next">9</li>
+		</ul>
+	</main>
+	<footer style="display: none;">
+		<ul class="col4 main">
+			<li>
+				<h5>品质保障</h5>
+				<p>品质护航，购物无忧</p>
+			</li>
+			<li>
+				<h5>七天无理由退货</h5>
+				<p>为你提供售后保障</p>
+			</li>
+			<li>
+				<h5>品质保障</h5>
+				<p>呈现不一样的服务</p>
+			</li>
+			<li>
+				<h5>品质保障</h5>
+				<p>您的购物指南</p>
+			</li>
+		</ul>
+		<dl class="links main">
+			<dd>
+				<dl>
+					<dt>购物指南</dt>
+					<dd>免费注册</dd>
+					<dd>开通支付宝</dd>
+					<dd>支付宝充值</dd>
+				</dl>
+			</dd>
+			<dd>
+				<dl>
+					<dt>天猫保障</dt>
+					<dd>发票保障</dd>
+					<dd>售后规则</dd>
+					<dd>缺货赔付</dd>
+				</dl>
+			</dd>
+			<dd>
+				<dl>
+					<dt>支付方式</dt>
+					<dd>快捷支付</dd>
+					<dd>信用卡</dd>
+					<dd>余额宝</dd>
+					<dd>蚂蚁花呗</dd>
+					<dd>货到付款</dd>
+				</dl>
+			</dd>
+			<dd>
+				<dl>
+					<dt>商家服务</dt>
+					<dd>天猫规则</dd>
+					<dd>商家入驻</dd>
+					<dd>商家中心</dd>
+					<dd>天猫智库</dd>
+					<dd>物流服务</dd>
+					<dd>喵言喵语</dd>
+				</dl>
+			</dd>
+			<dl>
+				<dl>
+					<dt>手机天猫</dt>
+					<dd><img src="img/QRcode.png"></dd>
+				</dl>
+			</dl>
+		</dl>
+		<div class="explain">
+			<ul class="about main">
+				<li>关于天猫</li>
+				<li>帮助中心</li>
+				<li>开放平台</li>
+				<li>诚聘英才</li>
+				<li>联系我们</li>
+				<li>网站合作</li>
+				<li>法律声明</li>
+				<li>隐私权政策</li>
+				<li>廉政举报</li>
+				<li>规划意见征集政策</li>
+			</ul>
+			<article class="relLink main">
+				<a href="">阿里巴巴集团 &nbsp;|</a>
+				<a href="">淘宝网 &nbsp;|</a>
+				<a href="">聚划算 &nbsp;|</a>
+				<a href="">阿里巴巴国际交易市场 &nbsp;|</a>
+				<a href="">1688 &nbsp;|</a>
+				<a href="">阿里妈妈 &nbsp;|</a>
+				<a href="">阿里云计算 &nbsp;|</a>
+				<a href="">AliOS &nbsp;|</a>
+				<a href="">阿里通信 &nbsp;|</a>
+				<a href="">万网 &nbsp;|</a>
+				<a href="">高德 &nbsp;|</a>
+				<a href="">UC &nbsp;|</a>
+				<a href="">友盟 &nbsp;|</a>
+				<a href="">虾米 &nbsp;|</a>
+				<a href="">钉钉 &nbsp;|</a>
+				<a href="">支付宝 &nbsp;|</a>
+				<a href="">阿里安全</a>
+			</article>
+			<ul class="records main">
+				<li><span>增值电信业务经营许可证：浙B2一201106</span><span>市场名称登记证：工商网市字3301004119号</span><span>增值电信业务</span><span>增值电信业务</span><span>增值电信业务</span>
+				</li>
+				<li><span>增值电信业务</span><span>增值电信业务经营许可证：浙B2一201106</span><span>增值电信业务</span></li>
+				<li><span>市场名称登记证：工商网市字3301004119号</span><span>违法信息举报</span><span>增值电信业务经营许可证：浙B2一201106</span></li>
+				<li><span>增值电信业务</span><span>市场名称登记证：工商网市字3301004119号</span><span>增值电信业务</span></li>
+			</ul>
+		</div>
+	</footer>
+</body>
+
+</html>

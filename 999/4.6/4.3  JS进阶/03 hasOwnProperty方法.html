@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+				var obj={
+				a:1,
+				b:2,
+				c:3,
+				d:false
+			}
+			
+			Object.prototype.f=10;
+			obj.__proto__={
+				e:"小蒙"
+			}
+			console.log(obj.hasOwnProperty("a"));
+			console.log(obj.hasOwnProperty("b"));
+			console.log(obj.hasOwnProperty("c"));
+			console.log(obj.hasOwnProperty("d"));
+			console.log(obj.hasOwnProperty("e"));
+			console.log(obj.hasOwnProperty("f"));
+			for (var k in obj){
+				obj.hasOwnProperty(k)&&console.log(k)
+			}
+		</script>
+	</body>
+</html>
